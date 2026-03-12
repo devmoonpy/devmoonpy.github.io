@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#e5f4ff" />
+      <stop offset="45%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f97316" />
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#020617" />
+  <circle cx="32" cy="32" r="20" fill="url(#bg)" />
+  <text x="32" y="39" text-anchor="middle" font-size="30" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI Emoji', 'Noto Color Emoji'">
+    <
+  </text>
+</svg>
+
