@@ -18,7 +18,7 @@ function typeText(element, text, speed = 35) {
 }
 
 function setupSectionNavigation() {
-  const buttons = document.querySelectorAll(".nav-btn");
+  const buttons = document.querySelectorAll(".nav-btn[data-section]");
   const sections = document.querySelectorAll(".section");
   const commandText = document.getElementById("section-command-text");
 

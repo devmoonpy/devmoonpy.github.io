@@ -473,5 +473,18 @@ body {
   .markdown-body {
     font-size: 13px;
   }
+
+  /* 버튼 4개(about/projects/skills/knowledge)가 한 줄에 다 안 들어가는
+     좁은 화면에서는 줄바꿈 허용 (기존엔 3개라 안 넘쳤음) */
+  .content-nav {
+    flex-wrap: wrap;
+  }
+}
+
+/* knowledge 버튼은 <a>라서 nav-btn 기본 버튼 스타일에 없는 부분만 보강 */
+.content-nav a.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 

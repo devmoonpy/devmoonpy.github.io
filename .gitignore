@@ -1,0 +1,18 @@
+# 빌드 산출물 (CI가 매번 새로 만듦, 커밋 대상 아님)
+/dist/
+/knowledge-site/public/
+
+# 의존성
+node_modules/
+
+# Quartz 내부 캐시/심링크된 플러그인 (로컬에서 매번 재생성됨)
+.quartz/
+.quartz-cache/
+
+# 방어적 안전장치: 이 이름의 폴더는 이 공개 저장소에 절대 들어오면 안 됨
+/knowledge-site/content/private/
+/knowledge-site/content/inbox/
+
+# OS
+.DS_Store
+Thumbs.db

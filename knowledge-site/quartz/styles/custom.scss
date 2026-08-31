@@ -1,0 +1,27 @@
+@use "./variables.scss" as *;
+
+// put your custom CSS here!
+
+// 기존 포트폴리오(devmoonpy.github.io)와 톤을 맞추기 위한 오버라이드.
+// 각진 터미널 UI: Quartz 기본 컴포넌트(검색창, 그래프, 코드블록 등)가
+// 각자 border-radius를 박아넣고 있어(base.scss + 커뮤니티 플러그인 CSS),
+// 변수 하나로는 못 잡아서 전역으로 눌러버림.
+*,
+*::before,
+*::after {
+  border-radius: 2px !important;
+}
+
+::selection {
+  background: var(--tertiary);
+  color: var(--light);
+}
+
+code,
+pre {
+  border-color: var(--lightgray);
+}
+
+a code {
+  color: var(--tertiary);
+}

@@ -1,0 +1,10 @@
+{
+  "name": "devmoonpy.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "verify": "node scripts/verify-public-content.mjs",
+    "preview": "npm run build && npm run verify && node scripts/serve-dist.mjs"
+  }
+}

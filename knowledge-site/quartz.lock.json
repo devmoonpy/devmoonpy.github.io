@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "plugins": {
+    "portfolio-nav": {
+      "source": "./local-plugins/portfolio-nav",
+      "resolved": "C:\\Users\\FORYOUCOM\\Desktop\\mazino_blog\\devmoonpy.github.io\\knowledge-site\\local-plugins\\portfolio-nav",
+      "commit": "local",
+      "installedAt": "2026-08-31T02:47:16.140Z"
+    }
+  }
+}
