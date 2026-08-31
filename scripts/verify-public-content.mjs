@@ -1,17 +1,17 @@
 // /publish 전, 그리고 CI 배포 직전에 실행하는 안전장치.
-// dist/ 에 민감정보나 깨진 링크가 없는지, 필수 파일이 다 있는지 검사한다.
-// second-brain-private 같은 별도 비공개 저장소 없이 이 저장소 안에서 바로 글을
-// 쓰기로 했기 때문에(그래서 이 저장소에 커밋되는 순간 git 히스토리에 영구적으로
-// 남는다), 이 검사가 사실상 유일한 방어선이다. 문제가 있으면 정확한 파일과
-// 이유를 출력하고 exit code 1로 끝난다 — 호출한 쪽(build-site.mjs 이후, 또는
-// /publish, 또는 CI)이 이걸 보고 push/deploy를 막아야 한다.
+// 빌드 결과(knowledge-site/public/)에 민감정보나 깨진 링크가 없는지, 필수 파일이
+// 다 있는지 검사한다. 별도 비공개 저장소 없이 이 저장소 안에서 바로 글을 쓰기로
+// 했기 때문에(그래서 이 저장소에 커밋되는 순간 git 히스토리에 영구적으로 남는다),
+// 이 검사가 사실상 유일한 방어선이다. 문제가 있으면 정확한 파일과 이유를 출력하고
+// exit code 1로 끝난다 — 호출한 쪽(/publish, 또는 CI)이 이걸 보고 push/deploy를
+// 막아야 한다.
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
-const DIST = path.join(ROOT, "dist")
+const SITE = path.join(ROOT, "knowledge-site", "public")
 const KNOWLEDGE_CONTENT = path.join(ROOT, "knowledge-site", "content")
 
 const TEXT_EXTENSIONS = new Set([
@@ -78,7 +78,7 @@ function checkForbiddenDirs() {
 
 function checkSensitivePatterns() {
   const problems = []
-  walk(DIST, (file) => {
+  walk(SITE, (file) => {
     if (!TEXT_EXTENSIONS.has(path.extname(file).toLowerCase())) return
     const content = readFileSync(file, "utf-8")
     for (const [label, pattern] of SENSITIVE_PATTERNS) {
@@ -104,7 +104,7 @@ function resolveInternalLink(href, fromFile) {
   if (cleaned === "") return { ok: true } // 순수 fragment/query만 있던 링크
 
   const basePath = cleaned.startsWith("/")
-    ? path.join(DIST, cleaned)
+    ? path.join(SITE, cleaned)
     : path.join(path.dirname(fromFile), cleaned)
 
   const candidates = [
@@ -118,7 +118,7 @@ function resolveInternalLink(href, fromFile) {
 
 function checkBrokenLinks() {
   const problems = []
-  walk(DIST, (file) => {
+  walk(SITE, (file) => {
     if (path.extname(file).toLowerCase() !== ".html") return
     const content = readFileSync(file, "utf-8")
     const hrefRe = /(?:href|src)="([^"]*)"/g
@@ -139,21 +139,15 @@ function checkBrokenLinks() {
 }
 
 function checkRequiredFiles() {
-  const required = [
-    "index.html",
-    "styles.css",
-    "script.js",
-    "favicon.svg",
-    "knowledge/index.html",
-  ]
+  const required = ["index.html", "404.html"]
   return required
-    .filter((f) => !existsSync(path.join(DIST, f)))
-    .map((f) => ({ file: `dist/${f}`, reason: "필수 파일이 없습니다." }))
+    .filter((f) => !existsSync(path.join(SITE, f)))
+    .map((f) => ({ file: `knowledge-site/public/${f}`, reason: "필수 파일이 없습니다." }))
 }
 
 function main() {
-  if (!existsSync(DIST)) {
-    console.error("✗ dist/ 가 없습니다. 먼저 npm run build 를 실행하세요.")
+  if (!existsSync(SITE)) {
+    console.error("✗ knowledge-site/public/ 이 없습니다. 먼저 npm run build 를 실행하세요.")
     process.exit(1)
   }
 

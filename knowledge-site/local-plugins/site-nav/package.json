@@ -1,13 +1,13 @@
 {
-  "name": "portfolio-nav",
+  "name": "site-nav",
   "private": true,
   "type": "module",
   "exports": {
     "./components": "./dist/components/index.js"
   },
   "quartz": {
-    "name": "portfolio-nav",
-    "displayName": "Portfolio Nav",
+    "name": "site-nav",
+    "displayName": "Site Nav",
     "category": "component",
     "version": "1.0.0",
     "quartzVersion": ">=5.0.0",
@@ -15,8 +15,8 @@
     "defaultOrder": 10,
     "defaultEnabled": true,
     "components": {
-      "PortfolioNav": {
-        "displayName": "Portfolio Nav",
+      "SiteNav": {
+        "displayName": "Site Nav",
         "defaultPosition": "header",
         "defaultPriority": 10
       }

@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: "1MOON // knowledge"
+  pageTitle: 1MOON
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics: null
   locale: en-US
-  baseUrl: devmoonpy.github.io/knowledge
+  baseUrl: devmoonpy.github.io
   ignorePatterns:
     - private
     - templates
@@ -15,8 +15,8 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: Fira Code
-      body: Fira Code
+      header: Noto Sans KR
+      body: Noto Sans KR
       code: Fira Code
     colors:
       lightMode:
@@ -98,7 +98,7 @@ plugins:
     enabled: false
     order: 92
   - source: "@quartz-community/quartz-fonts"
-    enabled: true
+    enabled: false
   - source: "@quartz-themes/core"
     enabled: false
     options:
@@ -254,7 +254,7 @@ plugins:
       position: beforeBody
       priority: 15
       display: all
-  - source: "./local-plugins/portfolio-nav"
+  - source: ./local-plugins/site-nav
     enabled: true
     layout:
       position: header

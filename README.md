@@ -1,86 +1,54 @@
-![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=25&pause=1000&color=0056B3&width=435&lines=Whoami+1MOON;Scanning+Vulnerabilities...;Access+Granted)
+### 1MOON
 
----
+bug bounty를 위한 학습 노트 · cheat sheet · 공격 기법 정리. [Quartz](https://quartz.jzhao.xyz/) 기반 정적 사이트입니다.
 
-### 1MOON Hybrid Portfolio
-
-Offensive Web Security / Red Team 관점에서 웹을 다루는 **하이브리드 터미널 포트폴리오 & 블로그**입니다.
-
-- **컨셉**: 터미널(Terminal) UI + 읽기 좋은 블로그 레이아웃
 - **컬러**: Royal Blue `#0056b3` / Dark Navy `#0a0e14` / Terminal Green `#00ff41`
-- **타깃**: 보안/웹 개발 관련 업계 관계자, 개발자
+- **폰트**: 본문 Noto Sans KR (가독성), 코드/커맨드 Fira Code
 
 ---
 
 ### 🌐 Live
 
-- GitHub Pages: `https://devmoonpy.github.io`
-- Knowledge Base: `https://devmoonpy.github.io/knowledge/`
-
----
-
-### 🧬 Features
-
-- **Single Terminal Layout**
-  - 하나의 터미널 윈도우 안에서 `whoami`, Blog, Projects, About 섹션을 순차적으로 보여주는 구성
-
-- **Terminal Vibes**
-  - Fira Code 모노스페이스 폰트
-  - 명령 프롬프트(`$`, `>`)와 깜빡이는 커서 애니메이션
-  - 로딩 시 `whoami` 영역에 한 줄씩 타이핑되는 효과
-
-- **Blog & Markdown**
-  - `marked.js` 를 이용해 **마크다운 기반 글쓰기** 지원
-  - TryHackMe / Hack The Box / CTF 등에서의 웹 공격, 취약점 분석 기록을 정리하기 적합
-
-- **Knowledge Base** (`/knowledge/`)
-  - [Quartz](https://quartz.jzhao.xyz/) 기반 지식베이스. 포트폴리오와 같은 다크 터미널 톤으로 커스터마이징
-  - 검색, 태그, 백링크, 지식 그래프 지원
-  - 포트폴리오와 하나의 GitHub Pages 배포로 통합 (`knowledge-site/` 참고)
-
----
-
-### 🛠 Tech Stack
-
-- **Frontend**: Vanilla HTML / CSS / JavaScript (포트폴리오), [Quartz v5](https://quartz.jzhao.xyz/) (지식베이스)
-- **Styling**: Fira Code, 다크 테마, 반응형 레이아웃 (Desktop / Mobile)
-- **Security Lab Infra**: Docker, AWS, Linux 기반 실습 환경 상정
-- **Markdown**: `marked` CDN (포트폴리오), Quartz 자체 마크다운 파이프라인 (지식베이스)
-- **Deploy**: GitHub Pages, GitHub Actions (`devmoonpy.github.io`)
+- `https://devmoonpy.github.io/`
 
 ---
 
 ### 📁 Structure
 
-- `index.html` / `styles.css` / `script.js` / `favicon.svg` / `background.png` – 메인 포트폴리오 (루트 `/`)
-- `knowledge-site/` – Quartz 지식베이스 소스 (`/knowledge/`로 빌드됨)
-- `scripts/` – 통합 빌드(`build-site.mjs`) · 검증(`verify-public-content.mjs`) · 프리뷰 서버(`serve-dist.mjs`)
+- `knowledge-site/` – Quartz 소스. `content/`가 실제 글이 들어가는 곳
+  - `content/cheatsheets/` – 페이로드, 명령어, 우회 기법 빠른 참조
+  - `content/techniques/` – 취약점 유형별 원리와 찾는 방법
+  - `content/recon/` – 정찰·자산 탐색 방법론
+  - `content/notes/` – 그때그때 학습 메모
+  - `local-plugins/site-nav/` – 상단 메뉴 (content/ 폴더 구조를 보고 자동 생성됨)
+  - `quartz/styles/custom.scss` – 테마 오버라이드
+- `scripts/` – 검증(`verify-public-content.mjs`) · 프리뷰 서버(`serve-site.mjs`)
 - `.github/workflows/deploy-pages.yml` – 빌드 → 검증 → GitHub Pages 배포
-- `dist/` – 빌드 결과물 (커밋 안 함, CI가 매번 생성)
+
+새 섹션(폴더)을 추가하고 싶으면 `content/` 아래에 폴더만 만들면 됩니다. 상단 메뉴는 자동으로 생성됩니다.
 
 ---
 
 ### 🚀 Local Preview
 
-포트폴리오만 볼 때는 예전처럼 파일을 바로 열어도 됩니다.
-
+최초 1회:
 ```bash
-open index.html
+cd knowledge-site && npm i
 ```
 
-포트폴리오 + `/knowledge/`를 실제 배포와 동일한 구조로 함께 확인하려면 (최초 1회 `cd knowledge-site && npm i` 필요):
-
+이후:
 ```bash
 npm run preview
-# http://localhost:8080/          (포트폴리오)
-# http://localhost:8080/knowledge/ (지식베이스)
+# http://localhost:8080/
 ```
 
 ---
 
-### 💬 Concept Note
+### ✍️ 글쓰기
 
-> "단순히 예쁜 사이트가 아니라, 취약점 분석가와 레드팀러의 로그가 터미널 위에 펼쳐지는 화면."
+Claude Code 커맨드로 작성합니다.
 
-- 코드 가독성과 시각적인 **Hacker 감성**의 밸런스를 맞추는 것을 목표로 합니다.
-- TryHackMe, Hack The Box, CTF에서 쳐 본 웹 공격과 방어 아이디어를 정리하는 용도로 설계되었습니다.
+- `/note <내용>` — 메모를 받아 섹션 분류, 관련 글 백링크 제안, frontmatter 작성까지 해서 저장. 민감정보(서버 정보, 인증정보, 미해결 bug bounty 대상 식별 정보 등)로 보이면 저장 전에 먼저 확인함.
+- `/publish` — 빌드 → 검증(민감정보/깨진 링크 스캔) → 변경사항 확인 → 커밋/push. 검증 실패 시 정확한 파일과 사유를 보여주고 중단.
+
+이 저장소는 **공개 저장소**입니다. 커밋되는 순간 인터넷에 공개되고 git 히스토리에 영구히 남으므로, 진행 중인 bug bounty 프로그램의 실제 대상은 절대 적지 않습니다 — 일반화된 기법만 정리합니다.

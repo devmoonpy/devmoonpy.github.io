@@ -1,5 +1,4 @@
 # 빌드 산출물 (CI가 매번 새로 만듦, 커밋 대상 아님)
-/dist/
 /knowledge-site/public/
 
 # 의존성

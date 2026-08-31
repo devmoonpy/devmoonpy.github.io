@@ -1,15 +1,15 @@
 ---
-title: knowledge
-description: 1MOON의 공개 지식베이스 — 보안, 인프라, 개발 기록
+title: 1MOON
+description: bug bounty를 위한 학습 노트, cheat sheet, 공격 기법 정리
 ---
 
 ## whoami
 
-`devmoonpy`의 공개 지식베이스입니다. 포트폴리오([← portfolio](/))에 다 담기 힘든 메모, 조사 기록, 결정 사항을 여기에 정리합니다.
+`devmoonpy`의 공부 기록입니다. bug bounty를 위해 공부하는 내용, 자주 쓰는 페이로드/명령어, 공격 기법을 정리해둡니다.
 
-- [[projects/index|projects]] — 진행 중이거나 끝낸 프로젝트 기록
-- [[security/index|security]] — 취약점 분석, CTF, 레드팀 관점의 웹 공격 노트
-- [[server-network/index|server-network]] — 서버·네트워크 구성, 인프라 학습 기록 (민감정보 제외)
-- [[decisions/index|decisions]] — 기술적 결정과 그 이유
+- [[cheatsheets/index|cheatsheets]] — 페이로드, 명령어, 우회 기법 빠른 참조
+- [[techniques/index|techniques]] — 취약점 유형별 원리와 찾는 방법
+- [[recon/index|recon]] — 정찰·자산 탐색 방법론
+- [[notes/index|notes]] — 그때그때 공부하는 메모
 
 오른쪽 위 검색으로 전체 문서를 찾을 수 있고, 각 문서 태그와 백링크로 연결된 글들을 따라갈 수 있습니다.

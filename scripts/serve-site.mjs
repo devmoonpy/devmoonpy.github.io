@@ -1,5 +1,5 @@
-// dist/ 를 그대로 서빙하는 의존성 0개짜리 정적 서버.
-// 실제 배포(GitHub Pages)와 동일한 구조(/, /knowledge/)를 로컬에서 확인하기 위한 용도.
+// knowledge-site/public/ 을 그대로 서빙하는 의존성 0개짜리 정적 서버.
+// 실제 배포(GitHub Pages)와 동일하게 로컬에서 확인하기 위한 용도.
 // Quartz는 파일을 foo.html 형태로 내보내고(트레일링 슬래시 없는 clean URL), 폴더는
 // foo/index.html로 내보내므로 두 케이스를 모두 시도한다.
 
@@ -9,7 +9,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
-const DIST = path.join(ROOT, "dist")
+const SITE = path.join(ROOT, "knowledge-site", "public")
 const PORT = Number(process.env.PORT) || 8080
 
 const MIME = {
@@ -31,7 +31,7 @@ const MIME = {
 function resolveFile(urlPath) {
   const decoded = decodeURIComponent(urlPath.split("?")[0].split("#")[0])
   const safeSuffix = path.normalize(decoded).replace(/^(\.\.[/\\])+/, "")
-  const base = path.join(DIST, safeSuffix)
+  const base = path.join(SITE, safeSuffix)
 
   const candidates = decoded.endsWith("/")
     ? [path.join(base, "index.html")]
@@ -45,28 +45,26 @@ function resolveFile(urlPath) {
   return null
 }
 
-function notFound(urlPath, res) {
-  const custom404 = urlPath.startsWith("/knowledge/")
-    ? path.join(DIST, "knowledge", "404.html")
-    : null
-  if (custom404 && existsSync(custom404)) {
+function notFound(res) {
+  const custom404 = path.join(SITE, "404.html")
+  if (existsSync(custom404)) {
     res.writeHead(404, { "Content-Type": "text/html; charset=utf-8" })
     createReadStream(custom404).pipe(res)
     return
   }
   res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" })
-  res.end(`404 Not Found: ${urlPath}`)
+  res.end("404 Not Found")
 }
 
-if (!existsSync(DIST)) {
-  console.error("✗ dist/ 가 없습니다. 먼저 npm run build 를 실행하세요.")
+if (!existsSync(SITE)) {
+  console.error("✗ knowledge-site/public/ 이 없습니다. 먼저 npm run build 를 실행하세요.")
   process.exit(1)
 }
 
 const server = createServer((req, res) => {
   const file = resolveFile(req.url ?? "/")
   if (!file) {
-    notFound(req.url ?? "/", res)
+    notFound(res)
     return
   }
   const ext = path.extname(file).toLowerCase()
@@ -75,8 +73,6 @@ const server = createServer((req, res) => {
 })
 
 server.listen(PORT, () => {
-  console.log(`\n✓ 통합 프리뷰 서버 실행 중: http://localhost:${PORT}/`)
-  console.log(`  - 포트폴리오: http://localhost:${PORT}/`)
-  console.log(`  - 지식베이스: http://localhost:${PORT}/knowledge/`)
+  console.log(`\n✓ 프리뷰 서버 실행 중: http://localhost:${PORT}/`)
   console.log("  Ctrl+C 로 종료\n")
 })
