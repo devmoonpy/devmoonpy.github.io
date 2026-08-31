@@ -10,5 +10,5 @@
 빌드는 저장소 루트에서 `npm run build`로 실행한다. 이 폴더에서 직접 미리보기하려면:
 
 ```bash
-npx quartz build --serve
+node quartz/bootstrap-cli.mjs build --serve
 ```
