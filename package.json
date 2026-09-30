@@ -1,10 +1,10 @@
 {
-  "name": "devmoonpy.github.io",
+  "name": "mazino-personal-site",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "cd knowledge-site && node quartz/bootstrap-cli.mjs plugin install --from-config && node quartz/bootstrap-cli.mjs build",
-    "verify": "node scripts/verify-public-content.mjs",
-    "preview": "npm run build && npm run verify && node scripts/serve-site.mjs"
-  }
+    "build": "node scripts/build.mjs",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=22" }
 }
