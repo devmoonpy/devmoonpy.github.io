@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: 1MOON
+  pageTitle: mazino
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -20,23 +20,23 @@ configuration:
       code: Fira Code
     colors:
       lightMode:
-        light: "#0a0e14"
+        light: "#101318"
         lightgray: "#1b2433"
         gray: "#2d3648"
         darkgray: "#e6edf7"
         dark: "#f4f7ff"
-        secondary: "#0056b3"
-        tertiary: "#00ff41"
+        secondary: "#67b4f5"
+        tertiary: "#ffd343"
         highlight: rgba(0, 86, 179, 0.15)
         textHighlight: rgba(0, 255, 65, 0.25)
       darkMode:
-        light: "#0a0e14"
+        light: "#101318"
         lightgray: "#1b2433"
         gray: "#2d3648"
         darkgray: "#e6edf7"
         dark: "#f4f7ff"
-        secondary: "#0056b3"
-        tertiary: "#00ff41"
+        secondary: "#67b4f5"
+        tertiary: "#ffd343"
         highlight: rgba(0, 86, 179, 0.15)
         textHighlight: rgba(0, 255, 65, 0.25)
 plugins:

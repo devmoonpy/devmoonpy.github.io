@@ -1,16 +1,14 @@
 ---
-title: 1MOON
-description: bug bounty를 위한 학습 노트, cheat sheet, 공격 기법 정리
+title: mazino
+description: mazino · devmoonpy. Web Security, Server Security, Network Security.
 ---
 
-## whoami
-
-`devmoonpy`의 공부 기록입니다. bug bounty를 위해 공부하는 내용, 자주 쓰는 페이로드/명령어, 공격 기법을 정리해둡니다.
-
-- [[cheatsheets/index|cheatsheets]] — 페이로드, 명령어, 우회 기법 빠른 참조
-- [[techniques/index|techniques]] — 취약점 유형별 원리와 찾는 방법
-- [[recon/index|recon]] — 정찰·자산 탐색 방법론
-- [[notes/index|notes]] — 그때그때 공부하는 메모
-- [[learning-log/index|learning-log]] — "기록 시작/완료"로 정리한 학습 세션 요약
-
-오른쪽 위 검색으로 전체 문서를 찾을 수 있고, 각 문서 태그와 백링크로 연결된 글들을 따라갈 수 있습니다.
+<div class="brand-home">
+<section class="identity-card" aria-labelledby="identity-title">
+<div class="identity-topline"><span class="brand-eyebrow">PERSONAL IDENTITY</span><span class="identity-marker" aria-hidden="true">MZ / 01</span></div>
+<div class="identity-main"><div class="identity-copy"><p class="identity-role">HACKER</p><h1 id="identity-title">mazino<span>.</span></h1><p class="identity-handle">@devmoonpy</p></div><img class="identity-avatar" src="assets/profile-preview.png" alt="Pixel penguin in a blue-trimmed hoodie" width="96" height="96"></div>
+<div class="identity-focus"><span class="brand-eyebrow">EXPLORING</span><p>Web Security <span>/</span> Server Security <span>/</span> Network Security</p></div>
+<div class="identity-details"><div><span class="brand-eyebrow">CURRENTLY AT</span><p>FORYOUCOM</p></div><div><span class="brand-eyebrow">BUILT BY ME</span><p class="company-site"><a href="https://xn--2r5b66l8me.com/">FORYOUCOM ↗</a></p></div></div>
+<div class="identity-links"><a href="https://github.com/devmoonpy">GitHub <span aria-hidden="true">↗</span></a><a href="writing/">Notes <span aria-hidden="true">↗</span></a><span class="identity-signature" aria-hidden="true">mz_</span></div>
+</section>
+</div>
